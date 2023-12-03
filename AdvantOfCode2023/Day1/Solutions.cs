@@ -43,18 +43,8 @@ namespace AdvantOfCode2023.Day1
             Console.WriteLine(output);
         }
 
-
-        public static string Reverse(string s)
-        {
-            char[] charArray = s.ToCharArray();
-            Array.Reverse(charArray);
-            return new string(charArray);
-        }
-
         public void Secound()
         {
-            StringBuilder str = new StringBuilder();
-
             var listStringNumbers = new List<string>()
             {
                 "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"
@@ -133,14 +123,9 @@ namespace AdvantOfCode2023.Day1
 
                 var finalNumber = int.Parse($"{first}{secound}");
 
-                str.AppendLine($"{finalNumber} | {input}");
-
                 output += finalNumber;
             }
 
-            //File.WriteAllText("C:\\Users\\skyli\\source\\repos\\AdvantOfCode2023\\AdvantOfCode2023\\Day1\\out.txt", str.ToString());
-            
-            Console.WriteLine($"==========");
             Console.WriteLine(output);
         }
     }
