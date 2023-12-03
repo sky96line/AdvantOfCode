@@ -44,12 +44,16 @@ namespace AdvantOfCode2023.Day1
         }
 
 
+        public static string Reverse(string s)
+        {
+            char[] charArray = s.ToCharArray();
+            Array.Reverse(charArray);
+            return new string(charArray);
+        }
+
         public void Secound()
         {
-            var inp = "two1nine";
-            var i = inp.IndexOf("two");
-            Console.WriteLine(i);
-
+            StringBuilder str = new StringBuilder();
 
             var listStringNumbers = new List<string>()
             {
@@ -63,82 +67,80 @@ namespace AdvantOfCode2023.Day1
                 var firstDigit = -1;
                 var secoundDigit = -1;
 
-                var firstStringNumber = -1;
-                var secoundStringNumber = -1;
+                var firstDigitIndex = -1;
+                var secoundDigitIndex = -1;
 
+                var firstStringNumber = int.MaxValue;
+                var secoundStringNumber = int.MinValue;
+
+                var firstStringNumberIndex = int.MaxValue;
+                var secoundStringNumberIndex = int.MinValue;
+
+
+                int i = 0;
                 foreach (var ch in input.ToCharArray())
                 {
                     if (Char.IsNumber(ch) && (firstDigit < 0))
                     {
                         firstDigit = int.Parse(ch.ToString());
+                        firstDigitIndex = i;
                         break;
                     }
+                    i++;
                 }
 
 
                 foreach (var stringNumbers in listStringNumbers)
                 {
                     var index = input.IndexOf(stringNumbers);
-                    if ((index < firstStringNumber || firstStringNumber == -1) && index >= 0)
+
+                    if (index < firstStringNumberIndex && index >= 0 && (index < firstDigitIndex || firstDigitIndex == -1))
                     {
-                        index = listStringNumbers.IndexOf(stringNumbers) + 1;
-                        firstStringNumber = index;
+                        firstStringNumberIndex = index;
+                        firstStringNumber = listStringNumbers.IndexOf(stringNumbers) + 1;
                     }
-                        
+
                 }
 
 
+                i = input.Length-1;
                 foreach (var ch in input.ToCharArray().Reverse())
                 {
                     if (Char.IsNumber(ch) && (secoundDigit < 0))
                     {
                         secoundDigit = int.Parse(ch.ToString());
+                        secoundDigitIndex = i;
                         break;
                     }
+                    i--;
                 }
 
                 foreach (var stringNumbers in listStringNumbers)
                 {
-                    var index = input.IndexOf(stringNumbers);
-                    if (secoundStringNumber > index)
-                        secoundStringNumber = index;
+                    var index = input.LastIndexOf(stringNumbers);
+
+
+                    if (index > secoundStringNumberIndex && index >= 0 && (index > secoundDigitIndex || secoundDigitIndex == -1))
+                    {
+                        secoundStringNumberIndex = index;
+                        secoundStringNumber = listStringNumbers.IndexOf(stringNumbers) + 1;
+                    }
+
                 }
 
-                var first = 0;
-                var secound = 0;
-                if (firstDigit > 0)
-                {
-                    first = (firstStringNumber + 1) > firstDigit ? firstDigit : (firstStringNumber + 1);
-                }
-                else
-                {
-                    first = (firstStringNumber + 1);
-                }
-
-
-                if (secound > 0)
-                {
-                    secound = (secoundStringNumber + 1) > secoundDigit ? (secoundStringNumber + 1) : secoundDigit;
-                }
-                else
-                {
-                    secound = (secoundStringNumber + 1);
-                }
-
-                 
-
-
-                Console.WriteLine($"{firstDigit} | {firstStringNumber}");
-                //Console.WriteLine($"{secoundDigit} | {secoundStringNumber}");
-
-                Console.WriteLine($"{first}{secound}");
-
-                Console.WriteLine($"==========");
+                var first = firstStringNumber == int.MaxValue ? firstDigit : firstStringNumber;
+                var secound = secoundStringNumber == int.MinValue ? secoundDigit:secoundStringNumber;
 
                 var finalNumber = int.Parse($"{first}{secound}");
+
+                str.AppendLine($"{finalNumber} | {input}");
+
                 output += finalNumber;
             }
 
+            //File.WriteAllText("C:\\Users\\skyli\\source\\repos\\AdvantOfCode2023\\AdvantOfCode2023\\Day1\\out.txt", str.ToString());
+            
+            Console.WriteLine($"==========");
             Console.WriteLine(output);
         }
     }
