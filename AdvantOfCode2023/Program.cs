@@ -3,5 +3,5 @@
 using AdvantOfCode2023.Day3;
 
 Solutions day = new Solutions();
-day.First();
-//day.Secound();
+//day.First();
+day.Secound();

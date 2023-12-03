@@ -162,8 +162,105 @@ namespace AdvantOfCode2023.Day3
 
         public void Secound()
         {
+            var inputs = File.ReadAllLines(@"C:\Users\skyli\source\repos\AdvantOfCode2023\AdvantOfCode2023\Day3\Input3.txt");
 
+            List<KVP> kvps = new List<KVP>();
+
+            var digit = "";
+            List<Point> points = new List<Point>();
+
+            int row = 0;
+            foreach (var input in inputs)
+            {
+                int col = 0;
+                foreach (var c in input)
+                {
+                    if (char.IsDigit(c))
+                    {
+                        digit += c;
+                        Point point = new Point(row, col);
+                        points.Add(point);
+                    }
+                    else
+                    {
+                        if (!string.IsNullOrWhiteSpace(digit))
+                        {
+                            KVP kvp = new KVP(SymanticType.Digit, digit);
+                            kvp.AddAllPoint(points);
+
+                            kvps.Add(kvp);
+
+                            digit = "";
+                            points = new List<Point>();
+                        }
+
+                        if (IsSymbol(c) && c == '*')
+                        {
+                            Point point = new Point(row, col);
+
+                            KVP kvpSymobl = new KVP(SymanticType.Symbol, c.ToString());
+                            kvpSymobl.AddPoint(point);
+
+                            kvps.Add(kvpSymobl);
+                        }
+                    }
+                    col++;
+                }
+                row++;
+            }
+
+            if (!string.IsNullOrWhiteSpace(digit))
+            {
+                KVP kvp = new KVP(SymanticType.Digit, digit);
+                kvp.AddAllPoint(points);
+
+                kvps.Add(kvp);
+            }
+
+            //PrintKVP(kvps);
+            //return;
+            var total = 0;
+
+
+            var kvpsSymbol = kvps.Where(x => x.type == SymanticType.Symbol);
+
+            List<KVP> result = new List<KVP>();
+
+            foreach (var kvp in kvpsSymbol)
+            {
+                var mul = 1;
+                var r = kvp.indexes[0].r;
+                var c = kvp.indexes[0].c;
+
+                int isCount = 0;
+
+                for (int i = -1; i < 2; i++)
+                {
+                    for (int j = -1; j < 2; j++)
+                    {
+                        if (i == 0 && j == 0)
+                        {
+                            continue;
+                        }
+
+                        var key = GetKey(r + i, c + j, kvps);
+
+                        if (key is not null && !result.Contains(key))
+                        {
+                            isCount++;
+                            result.Add(key);
+                            mul *= int.Parse(key.key);
+                        }
+                    }
+                }
+
+                if(isCount>1)
+                    total += mul;
+            }
+
+            Console.WriteLine("===============");
+            Console.WriteLine(total);
         }
-        
+
     }
 }
