@@ -99,9 +99,12 @@ namespace AdvantOfCode2023.Day5
                     m.Range = long.Parse(map.Split(" ")[2]);
 
                     maps.Add(m);
+
+                    //seeds.RemoveAll(x => x > m.Source && x <= (m.Source + m.Range - 1));
+                    //seeds.Add(m.Source);
                 }
 
-
+                //seeds = seeds.Distinct().ToList();
                 for (int i = 0; i < seeds.Count(); i++)
                 {
                     var find = maps.FirstOrDefault(x => x.Source <= seeds[i] && (x.Source + x.Range - 1) >= seeds[i]);
@@ -114,12 +117,10 @@ namespace AdvantOfCode2023.Day5
                         seeds[i] = seeds[i] - find.Source + find.Dest;
                     }
                 }
-
-                Console.WriteLine(++counter);
             }
 
             Console.WriteLine("=========================");
-            Console.WriteLine(seeds.Min());
+            Console.WriteLine(seeds.Where(x=>x>0).Min());
             //File.WriteAllText("./output.txt", seeds.Min().ToString());
         }
     }
