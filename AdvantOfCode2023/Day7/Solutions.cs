@@ -15,7 +15,7 @@ namespace AdvantOfCode2023.Day7
 {
     public class Solutions
     {
-        List<char> cards = new() { 'A', 'K', 'Q', 'J', 'T', '9', '8', '7', '6', '5', '4', '3', '2' };
+        List<char> cards = new() { 'A', 'K', 'Q', 'T', '9', '8', '7', '6', '5', '4', '3', '2' , 'J' };
 
 
         private int GetRank(string hand)
@@ -31,6 +31,19 @@ namespace AdvantOfCode2023.Day7
                 else
                 {
                     card.Add(c, 1);
+                }
+            }
+
+            if (card.ContainsKey('J'))
+            {
+                var k = card.OrderByDescending(x => x.Value).Where(x=>x.Key != 'J').FirstOrDefault().Key;
+                
+                if (k == '\0')
+                    return 6;
+                else
+                {
+                    card[k] += card['J'];
+                    card.Remove('J');
                 }
             }
 
