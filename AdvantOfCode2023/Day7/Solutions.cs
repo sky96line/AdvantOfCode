@@ -15,10 +15,10 @@ namespace AdvantOfCode2023.Day7
 {
     public class Solutions
     {
-        List<char> cards = new() { 'A', 'K', 'Q', 'J', 'T', '9', '8', '7', '6', '5', '4', '3', '2' };
+        
 
 
-        private int GetRank(string hand)
+        private int GetRank1(string hand)
         {
             Dictionary<char, int> card = new();
 
@@ -67,6 +67,8 @@ namespace AdvantOfCode2023.Day7
 
         public void First()
         {
+            List<char> cards = new() { 'A', 'K', 'Q', 'J', 'T', '9', '8', '7', '6', '5', '4', '3', '2' };
+
             var inputs = File.ReadAllLines(@"C:\Users\akash.buch\Source\Repos\AdvantOfCode2023\AdvantOfCode2023\Day7\input7.txt");
 
             var hands = inputs.Select(x => x.Split(" ").First()).ToList();
@@ -77,7 +79,7 @@ namespace AdvantOfCode2023.Day7
             for (int i = 0; i < hands.Count(); i++)
             {
                 var curr = hands[i];
-                var rank = GetRank(hands[i]);
+                var rank = GetRank1(hands[i]);
 
                 if (curr == "KK677" || curr == "KTJJT")
                 {
