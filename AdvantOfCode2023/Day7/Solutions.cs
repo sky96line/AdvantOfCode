@@ -15,7 +15,7 @@ namespace AdvantOfCode2023.Day7
 {
     public class Solutions
     {
-        
+
 
 
         private int GetRank1(string hand)
@@ -36,8 +36,8 @@ namespace AdvantOfCode2023.Day7
 
             if (card.ContainsKey('J'))
             {
-                var k = card.OrderByDescending(x => x.Value).Where(x=>x.Key != 'J').FirstOrDefault().Key;
-                
+                var k = card.OrderByDescending(x => x.Value).Where(x => x.Key != 'J').FirstOrDefault().Key;
+
                 if (k == '\0')
                     return 6;
                 else
@@ -49,14 +49,14 @@ namespace AdvantOfCode2023.Day7
 
             if (card.Values.Any(x => x == 5))
                 return 6;
-            else if(card.Values.Any(x => x == 4) && card.Count() == 2)
+            else if (card.Values.Any(x => x == 4) && card.Count() == 2)
                 return 5;
             else if (card.Values.Any(x => x == 3) && card.Values.Any(x => x == 2) && card.Count() == 2)
                 return 4;
             else if (card.Values.Any(x => x == 3) && card.Values.Any(x => x == 1) && card.Count() == 3)
                 return 3;
             else if (card.Values.Any(x => x == 2) && card.Values.Any(x => x == 1) && card.Count() == 3)
-                return 2; 
+                return 2;
             else if (card.Values.Any(x => x == 2) && card.Values.Any(x => x == 1) && card.Count() == 4)
                 return 1;
             else
@@ -126,7 +126,7 @@ namespace AdvantOfCode2023.Day7
                         for (int j = 0; j < 5; j++)
                         {
                             var currsam = curr;
-                                                 var sam = sameg.Hand;
+                            var sam = sameg.Hand;
 
                             var curr_x = cards.IndexOf(hands[i][j]);
                             var same_y = cards.IndexOf(sameg.Hand[j]);
@@ -145,7 +145,7 @@ namespace AdvantOfCode2023.Day7
                             }
                         }
 
-                        
+
                         if (flag)
                             break;
                         else
@@ -155,7 +155,7 @@ namespace AdvantOfCode2023.Day7
                     Game game = new(hands[i], bids[i], rank);
                     games.Insert(index, game);
                 }
-                
+
             }
 
             var total = 0;
