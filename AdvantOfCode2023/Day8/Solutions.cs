@@ -16,19 +16,24 @@ namespace AdvantOfCode2023.Day8
 
     public class Solutions
     {
+        public List<string> inputs = new();
 
-        public void First()
+        public string direction = "";
+
+        public List<string> nodes = new();
+
+        public Solutions()
         {
-            var inputs = File.ReadAllLines(@"C:\Users\akash.buch\source\repos\AdvantOfCode2023\AdvantOfCode2023\Day8\input8_test.txt");
+            inputs = File.ReadAllLines(@"C:\Users\akash.buch\source\repos\AdvantOfCode2023\AdvantOfCode2023\Day8\input8.txt").ToList();
 
-            var direction = inputs.First();
+            direction = inputs.First();
 
-            var nodes = inputs.Skip(2).ToList();
-
-            var node = nodes.First(x => x.StartsWith("AAA = "));
-
+            nodes = inputs.Skip(2).ToList();
+        }
+        public int FirstPart2(string node)
+        {
             var step = 0;
-            while (!node.StartsWith("ZZZ = "))
+            while (node[2] != 'Z')
             {
                 if (direction[step % direction.Length] == 'L')
                 {
@@ -43,11 +48,83 @@ namespace AdvantOfCode2023.Day8
                 step++;
             }
 
-            Console.WriteLine(node);
+            //Console.WriteLine(node);
             Console.WriteLine(step);
+            return step;
         }
+
+        public int lcm(int x, int y)
+        {
+            if (y == 0)
+                return x;
+            return gcd(y, x % y);
+        }
+
+
+        public int gcd(int x, int y)
+        {
+            if (y == 0)
+                return x;
+            return gcd(y, x % y);
+        }
+
         public void Secound()
         {
+            var allNodes = inputs.Skip(2).ToList();
+
+            var nodes = allNodes.Where(x => x[2] == 'A').ToList();
+
+            List<int> index = new List<int>();
+            foreach (var node in nodes)
+            {
+                var i = FirstPart2(node);
+                index.Add(i);
+            }
+
+            LCM lcm = new LCM(index);
+            Console.WriteLine(lcm.getLCM());
+
+
+            /// Force way to do it.
+
+            //var step = 0;
+            //while (nodes.Count(x => x[2] != 'Z') > 0)
+            //{
+            //    Utility.PrintList(nodes);
+            //    Console.WriteLine("=================");
+            //    if (direction[step % direction.Length] == 'L')
+            //    {
+            //        var new_dir = new List<string>();
+            //        foreach (var node in nodes)
+            //        {
+            //            var left = node.Split(" = ").Last().Split(',').First().Replace("(", "").Replace(" ", "");
+            //            var lefy_node = allNodes.First(x => x.StartsWith($"{left} = "));
+            //            new_dir.Add(lefy_node);
+                        
+            //        }
+            //        nodes.Clear();
+            //        nodes.AddRange(new_dir);
+            //    }
+            //    if (direction[step % direction.Length] == 'R')
+            //    {
+            //        var new_dir = new List<string>();
+            //        foreach (var node in nodes)
+            //        {
+            //            var right = node.Split(" = ").Last().Split(',').Last().Replace(")", "").Replace(" ", "");
+            //            var right_node = allNodes.First(x => x.StartsWith($"{right} = "));
+            //            new_dir.Add(right_node);
+            //        }
+            //        nodes.Clear();
+            //        nodes.AddRange(new_dir);
+
+            //        //node = allNodes.FirstOrDefault(x => x.StartsWith($"{right} = "));
+            //    }
+                
+            //    step++;
+            //}
+
+            //Utility.PrintList(nodes);
+            //Console.WriteLine(step);
         }
     }
     
