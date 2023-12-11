@@ -101,7 +101,7 @@ namespace AdvantOfCode2023
     {
         public static void PrintList(object list)
         {
-            Console.WriteLine(JsonConvert.SerializeObject(list, Formatting.Indented));
+            Console.WriteLine(JsonConvert.SerializeObject(list));
         }
     }
 }
