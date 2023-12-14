@@ -73,6 +73,12 @@ namespace AdvantOfCode2023.Day12
             }
 
 
+            foreach (var index in indexes)
+            {
+
+            }
+
+
             StringBuilder sb = new StringBuilder(q);
             for (int i = 0; i < indexes.Count; i++) // 0, 1, 2
             {

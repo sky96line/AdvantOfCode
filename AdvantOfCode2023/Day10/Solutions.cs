@@ -36,12 +36,14 @@ namespace AdvantOfCode2023.Day10
 
         List<string> inputs;
         char[,] paths;
+        char[,] ans;
 
         public Solutions()
         {
-            inputs = File.ReadAllLines(@"C:\Users\akash.buch\source\repos\AdvantOfCode2023\AdvantOfCode2023\Day10\input10_test.txt").ToList();
+            inputs = File.ReadAllLines(@"C:\Users\akash.buch\source\repos\AdvantOfCode2023\AdvantOfCode2023\Day10\input10.txt").ToList();
 
             paths = new char[inputs.Count, inputs[0].Length];
+            ans = new char[inputs.Count, inputs[0].Length];
 
         }
 
@@ -50,8 +52,6 @@ namespace AdvantOfCode2023.Day10
             public int row { get; set; }
             public int col { get; set; }
         }
-
-        List<Pipe> dic { get; set; } = new();
 
         private (int row, int col) GetCordt(char dir)
         {
@@ -118,8 +118,8 @@ namespace AdvantOfCode2023.Day10
             int count = 0;
             while (true)
             {
-                Console.WriteLine(paths[curr_i, curr_j]);
-
+                //Console.WriteLine(paths[curr_i, curr_j]);
+                ans[curr_i, curr_j] = paths[curr_i, curr_j];
 
                 var cordt = GetCordt(dir);
 
@@ -136,7 +136,84 @@ namespace AdvantOfCode2023.Day10
             }
 
             Console.WriteLine(count);
+
+
+            
+            for (int x = 0; x < inputs.Count; x++)
+            {
+                for (int y = 0; y < inputs[0].Length; y++)
+                {
+                    if (ans[x, y] == '\0')
+                    {
+                        Console.Write(".");
+                    }
+                    else
+                    {
+                        Console.Write(ans[x, y]);
+                    }
+                }
+                Console.WriteLine("");
+            }
+
+
+
+
+            var c = 0;
+            for (int x = 0; x < inputs.Count; x++)
+            {
+                var s = -1;
+                var e = -1;
+                for (int y = 0; y < inputs[0].Length; y++)
+                {
+                    if (ans[x, y] != '\0')
+                    {
+                        s = y; 
+                        break;
+                    }
+                }
+
+                for (int y = inputs[0].Length-1; y > -1; y--)
+                {
+                    if (ans[x, y] != '\0')
+                    {
+                        e = y;
+                        break;
+                    }
+                }
+
+
+                for (int y = s; y < e; y++)
+                {
+                    if (ans[x,y] == '\0')
+                    {
+                        c++;
+                    }
+                }
+            }
+
+            Console.WriteLine($"Ans: {c}");
         }
+
+        private int indexOf(char[] ch, bool firstOrLast)
+        {
+            if (firstOrLast)
+            {
+                for (int i = 0; i < ch.Length; i++)
+                {
+                    if (ch[i] == 'X') return i;
+                }
+            }
+            else
+            {
+                for (int i = ch.Length; i >0; i--)
+                {
+                    if (ch[i] == 'X') return i;
+                }
+            }
+
+            return -1;
+        }
+
 
         public void Secound()
         {
