@@ -50,13 +50,77 @@ namespace AdvantOfCode2023.Day12
             return "";
         }
 
+
+        public char Getch(string str, int index)
+        {
+            if (index == 0)
+            {
+                if (str[index + 1] == '.') return '#';
+                if (str[index + 1] == '?') return '#';
+                if (str[index + 1] == '#') return '.';
+            }
+            else if (index == str.Length)
+            {
+                if (str[index - 1] == '.') return '#';
+                if (str[index - 1] == '?') return '#';
+                if (str[index - 1] == '#') return '.';
+            }
+            else
+            {
+                if (str[index - 1] == '.' && str[index + 1] == '.') return '#';
+                if (str[index - 1] == '.' && str[index + 1] == '?') return '#';
+                if (str[index - 1] == '.' && str[index + 1] == '#') return '.';
+
+                if (str[index - 1] == '?' && str[index + 1] == '.') return '#';
+                if (str[index - 1] == '?' && str[index + 1] == '?') return '#';
+                if (str[index - 1] == '?' && str[index + 1] == '#') return '.';
+
+                if (str[index - 1] == '#' && str[index + 1] == '.') return '.';
+                if (str[index - 1] == '#' && str[index + 1] == '?') return '.';
+                if (str[index - 1] == '#' && str[index + 1] == '#') return '.';
+            }
+            return '\0';
+        }
+
+        public string fn(string str, int index, List<int> arrang)
+        {
+            StringBuilder sb = new StringBuilder(str.ToString());
+
+            var flag = true;
+            foreach (var arg in arrang)
+            {
+                var c = 0;
+                for (int i = index; i < str.Length && c < arg; i++)
+                {
+                    if (flag)
+                    {
+                        var ch = Getch(sb.ToString(), i);
+                        sb[i] = ch;
+                        flag = false;
+                    }
+                    else
+                    {
+                        sb[i] = '#';
+                    }
+
+                    c++;
+                }
+
+                return sb.ToString();
+            }
+
+            return "";
+        }
+
         public void First()
         {
             var inputs = File.ReadAllLines(@"C:\Users\akash.buch\source\repos\AdvantOfCode2023\AdvantOfCode2023\Day12\input12_test.txt").ToList();
 
             
 
-            var game = "???.### 1,1,3";
+            var game = ".??..??...?##. 1,1,3";
+
+
             //var game = ".??..??...?##. 1,1,3";
 
             var q = game.Split(" ").First();
@@ -75,32 +139,34 @@ namespace AdvantOfCode2023.Day12
 
             foreach (var index in indexes)
             {
+                var ans = fn(q, index, a);
 
+                Console.WriteLine(ans);
             }
 
 
-            StringBuilder sb = new StringBuilder(q);
-            for (int i = 0; i < indexes.Count; i++) // 0, 1, 2
-            {
-                for (int j = indexes[i]; j < a.Count; j++) // 1, 1, 3
-                {
-                    int k = 0;
-                    for (k = j; k < a[j]; k++) 
-                    {
-                        if (sb[k + j] == '?') sb[k] = '#';
-                    }
-                    if (sb[k + j] == '?') sb[k] = '.';
+            //StringBuilder sb = new StringBuilder(q);
+            //for (int i = 0; i < indexes.Count; i++) // 0, 1, 2
+            //{
+            //    for (int j = indexes[i]; j < a.Count; j++) // 1, 1, 3
+            //    {
+            //        int k = 0;
+            //        for (k = j; k < a[j]; k++) 
+            //        {
+            //            if (sb[k + j] == '?') sb[k] = '#';
+            //        }
+            //        if (sb[k + j] == '?') sb[k] = '.';
                     
-                    sb = new StringBuilder(sb.ToString());
-                    Console.WriteLine(sb.ToString());
+            //        sb = new StringBuilder(sb.ToString());
+            //        Console.WriteLine(sb.ToString());
 
-                    break;
-                }
-            }
+            //        break;
+            //    }
+            //}
 
 
 
-            Console.WriteLine(sb.ToString());
+            //Console.WriteLine(sb.ToString());
         }
 
         public void Secound()
