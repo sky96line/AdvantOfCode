@@ -22,10 +22,13 @@ namespace AdvantOfCode2023.Day13
         public string GetStringFromIndex(string[] str, int index)
         {
             StringBuilder sb = new StringBuilder();
+            
             foreach (string s in str)
             {
                 sb.Append(s[index]);
             }
+
+            //Console.WriteLine($"{index} | {sb.ToString()}");
             return sb.ToString();
         }
 
@@ -39,7 +42,7 @@ namespace AdvantOfCode2023.Day13
             var mirror_top = 0;
             var mirror_bottom = 0;
 
-            for (int i = 1; i < game.Length - 1; i++)
+            for (int i = 0; i < game.Length - 1; i++)
             {
                 if (game[i].Equals(game[i + 1]))
                 {
@@ -52,7 +55,7 @@ namespace AdvantOfCode2023.Day13
             // outward logic
 
             var IsReflaction = false;
-            var refcount = 1;
+            var refcount = 0;
             while ((mirror_top - refcount) >= 0 && (mirror_bottom + refcount) < game.Count())
             {
                 if (game[mirror_top - refcount].Equals(game[mirror_bottom + refcount]))
@@ -81,7 +84,7 @@ namespace AdvantOfCode2023.Day13
             var mirror_left = 0;
             var mirror_right = 0;
 
-            for (int i = 1; i < game[0].Length - 1; i++)
+            for (int i = 0; i < game[0].Length - 1; i++)
             {
                 if (GetStringFromIndex(game, i).Equals(GetStringFromIndex(game, i + 1)))
                 {
@@ -92,7 +95,7 @@ namespace AdvantOfCode2023.Day13
             }
 
 
-            refcount = 1;
+            refcount = 0;
             while ((mirror_left - refcount) >= 0 && (mirror_right + refcount) < game[0].Length)
             {
                 if (GetStringFromIndex(game, mirror_left - refcount).Equals(GetStringFromIndex(game, mirror_right + refcount)))
@@ -121,7 +124,7 @@ namespace AdvantOfCode2023.Day13
 
         public void First()
         {
-            var inputs = File.ReadAllText(@"C:\Users\akash.buch\source\repos\AdvantOfCode2023\AdvantOfCode2023\Day13\input13.txt");
+            var inputs = File.ReadAllText(@"C:\Users\skyli\source\repos\AdvantOfCode2023\AdvantOfCode2023\Day13\input13.txt");
 
             var games = inputs.Split("\r\n\r\n");
 
