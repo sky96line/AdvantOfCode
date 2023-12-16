@@ -83,7 +83,7 @@ namespace AdvantOfCode2023.Day13
 
             for (int i = 1; i < game[0].Length - 1; i++)
             {
-                if (GetStringFromIndex(game,i).Equals(GetStringFromIndex(game, i + 1)))
+                if (GetStringFromIndex(game, i).Equals(GetStringFromIndex(game, i + 1)))
                 {
                     mirror_left = i;
                     mirror_right = i + 1;
@@ -95,7 +95,7 @@ namespace AdvantOfCode2023.Day13
             refcount = 1;
             while ((mirror_left - refcount) >= 0 && (mirror_right + refcount) < game[0].Length)
             {
-                if (GetStringFromIndex(game, mirror_left - refcount).Equals(GetStringFromIndex(game,mirror_right + refcount)))
+                if (GetStringFromIndex(game, mirror_left - refcount).Equals(GetStringFromIndex(game, mirror_right + refcount)))
                 {
                     if ((mirror_left - refcount) == 0 || (mirror_right + refcount) == game[0].Length - 1)
                     {
@@ -140,7 +140,7 @@ namespace AdvantOfCode2023.Day13
 
         public void Secound()
         {
-            var inputs = File.ReadAllLines(@"C:\Users\akash.buch\source\repos\AdvantOfCode2023\AdvantOfCode2023\Day10\input10_test.txt").ToList();            
+            var inputs = File.ReadAllLines(@"C:\Users\akash.buch\source\repos\AdvantOfCode2023\AdvantOfCode2023\Day10\input10_test.txt").ToList();
         }
     }
 
