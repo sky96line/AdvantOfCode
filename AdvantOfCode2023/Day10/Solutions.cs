@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO.Pipes;
 using System.Linq;
 using System.Net;
@@ -85,10 +87,11 @@ namespace AdvantOfCode2023.Day10
             return 'N';
         }
 
+
         public void First()
         {
             //List<Path> paths = new List<Path>();
-          
+
             int start_i = 0;
             int start_j = 0;
 
@@ -103,7 +106,7 @@ namespace AdvantOfCode2023.Day10
                         start_i = i;
                         start_j = j;
                     }
-                    paths[i,j] = ch;
+                    paths[i, j] = ch;
                     j++;
                 }
                 i++;
@@ -111,7 +114,7 @@ namespace AdvantOfCode2023.Day10
 
             //DFS(start_i, start_j, 'W', 0);
 
-            var dir = 'E';
+            var dir = 'S';
             var curr_i = start_i;
             var curr_j = start_j;
 
@@ -119,7 +122,11 @@ namespace AdvantOfCode2023.Day10
             while (true)
             {
                 //Console.WriteLine(paths[curr_i, curr_j]);
-                ans[curr_i, curr_j] = paths[curr_i, curr_j];
+
+                int c_i = curr_i * 2;
+                int c_j = curr_j * 2;
+
+                ans[c_i, c_j] = paths[curr_i, curr_j];
 
                 var cordt = GetCordt(dir);
 
@@ -135,63 +142,119 @@ namespace AdvantOfCode2023.Day10
                 count++;
             }
 
-            Console.WriteLine(count);
+            Console.WriteLine(Math.Ceiling((decimal)count / 2));
 
+            DoubleAns();
 
-            
-            for (int x = 0; x < inputs.Count; x++)
+            FloodFillRecursive(0, 0);
+
+            int c_count = 0;
+            StringBuilder sb = new StringBuilder();
+            for (int x = 0; x < inputs.Count * 2; x++)
             {
-                for (int y = 0; y < inputs[0].Length; y++)
+                for (int y = 0; y < inputs[0].Length * 2; y++)
                 {
                     if (ans[x, y] == '\0')
                     {
                         Console.Write(".");
+                        
+                        c_count++;
                     }
                     else
                     {
-                        Console.Write(ans[x, y]);
+                        if (ans[x, y] == 'F') Console.Write("┌");
+                        else if (ans[x, y] == '7') Console.Write("┐");
+                        else if (ans[x, y] == 'J') Console.Write("┘");
+                        else if (ans[x, y] == 'L') Console.Write("└");
+                        else if (ans[x, y] == '|') Console.Write("│");
+                        else if (ans[x, y] == '-') Console.Write("─");
+                        else
+                        {
+                            Console.Write(ans[x, y]);
+                        }
+                        //else if (ans[x, y] == 'S') Console.Write("┌");
+                        //else { Console.ForegroundColor = ConsoleColor.Yellow; Console.Write("┌"); }
+
+                        //Console.ForegroundColor = ConsoleColor.White;
                     }
                 }
+                //sb.AppendLine("");
                 Console.WriteLine("");
             }
 
+            Console.WriteLine(c_count);
+        }
+
+        void DoubleAns()
+        {
+            char[,] result = new char[inputs.Count * 2, inputs[0].Length * 2];
 
 
 
-            var c = 0;
-            for (int x = 0; x < inputs.Count; x++)
+        }
+
+        List<char> dirs = new List<char>()
+        {
+            'F',
+            '7',
+            'J',
+            'L',
+            '|',
+            '-'
+        };
+
+        void FloodFillRecursive(int x, int y)
+        {
+            // Check if the current position is within the canvas boundaries
+            if (x < 0 || x >= ans.GetLength(0) || y < 0 || y >= ans.GetLength(1))
+                return;
+
+            // Check if the current pixel has the original color
+            if (ans[x, y] == '#' || dirs.Contains(ans[x,y]))
+                return;
+
+            // Set the current pixel to the new color
+            ans[x, y] = '#';
+
+            // Recursive calls for neighboring pixels
+            FloodFillRecursive(x + 1, y); // Right
+            FloodFillRecursive(x - 1, y); // Left
+            FloodFillRecursive(x, y + 1); // Down
+            FloodFillRecursive(x, y - 1); // Up
+            
+            FloodFillRecursive(x - 1, y - 1); // Down
+            FloodFillRecursive(x - 1, y + 1); // Up
+            FloodFillRecursive(x + 1, y - 1); // Up
+            FloodFillRecursive(x + 1, y + 1); // Up
+        }
+
+        public void Flood(int i, int j)
+        {
+            if (i == inputs.Count + 1 && j == inputs[0].Length + 1)
             {
-                var s = -1;
-                var e = -1;
-                for (int y = 0; y < inputs[0].Length; y++)
-                {
-                    if (ans[x, y] != '\0')
-                    {
-                        s = y; 
-                        break;
-                    }
-                }
-
-                for (int y = inputs[0].Length-1; y > -1; y--)
-                {
-                    if (ans[x, y] != '\0')
-                    {
-                        e = y;
-                        break;
-                    }
-                }
-
-
-                for (int y = s; y < e; y++)
-                {
-                    if (ans[x,y] == '\0')
-                    {
-                        c++;
-                    }
-                }
+                ans[i, j] = '#';
+                return;
             }
 
-            Console.WriteLine($"Ans: {c}");
+            if (dirs.Contains(ans[i, j]))
+                return;
+
+            ans[i, j] = '#';
+
+            if (i == inputs.Count + 1)
+            {
+                Flood(i, j + 1);
+            }
+            else if (j == inputs[0].Length + 1)
+            {
+                Flood(i + 1, j);
+            }
+            else
+            {
+                Flood(i, j + 1);
+                Flood(i + 1, j + 1);
+                Flood(i + 1, j);
+            }
         }
 
         private int indexOf(char[] ch, bool firstOrLast)
