@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdvantOfCode2023
+namespace AdvantOfCode
 {
     public class LCM
     {
