@@ -32,7 +32,7 @@ namespace AdvantOfCode._2023.Day11
 
         public void First()
         {
-            var inputs = File.ReadAllLines(@"C:\Users\akash.buch\source\repos\AdvantOfCode2023\AdvantOfCode2023\Day11\input11.txt").ToList();
+            var inputs = File.ReadAllLines(@".\input11.txt").ToList();
 
             List<Point> points= new List<Point>();
             List<Result> results = new List<Result>();
@@ -150,7 +150,7 @@ namespace AdvantOfCode._2023.Day11
 
         public void Secound()
         {
-            var inputs = File.ReadAllLines(@"C:\Users\akash.buch\source\repos\AdvantOfCode2023\AdvantOfCode2023\Day10\input10_test.txt").ToList();            
+            var inputs = File.ReadAllLines(@".\input10_test.txt").ToList();            
         }
     }
 

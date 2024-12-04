@@ -11,7 +11,7 @@ namespace AdvantOfCode._2023.Day1
     {
         public void First()
         {
-            var inputs = File.ReadAllLines(@"C:\Users\skyli\source\repos\AdvantOfCode2023\AdvantOfCode2023\Day1\input1.txt");
+            var inputs = File.ReadAllLines(@".\input1.txt");
             var output = 0;
             foreach (var input in inputs)
             {
@@ -50,7 +50,7 @@ namespace AdvantOfCode._2023.Day1
                 "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"
             };
 
-            var inputs = File.ReadAllLines(@"C:\Users\skyli\source\repos\AdvantOfCode2023\AdvantOfCode2023\Day1\input1.txt");
+            var inputs = File.ReadAllLines(@".\input1.txt");
             var output = 0;
             foreach (var input in inputs)
             {

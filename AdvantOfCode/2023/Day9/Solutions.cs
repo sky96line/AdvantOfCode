@@ -36,8 +36,8 @@ namespace AdvantOfCode._2023.Day9
 
         public void First()
         {
-            //var inputs = File.ReadAllLines(@"C:\Users\akash.buch\source\repos\AdvantOfCode2023\AdvantOfCode2023\Day9\input9_test.txt").ToList();
-            var inputs = File.ReadAllLines(@"C:\Users\akash.buch\source\repos\AdvantOfCode2023\AdvantOfCode2023\Day9\input9.txt").ToList();
+            //var inputs = File.ReadAllLines(@".\input9_test.txt").ToList();
+            var inputs = File.ReadAllLines(@".\input9.txt").ToList();
 
 
             var total = 0;
@@ -77,8 +77,8 @@ namespace AdvantOfCode._2023.Day9
 
         public void Secound()
         {
-            //var inputs = File.ReadAllLines(@"C:\Users\akash.buch\source\repos\AdvantOfCode2023\AdvantOfCode2023\Day9\input9_test.txt").ToList();
-            var inputs = File.ReadAllLines(@"C:\Users\akash.buch\source\repos\AdvantOfCode2023\AdvantOfCode2023\Day9\input9.txt").ToList();
+            //var inputs = File.ReadAllLines(@".\input9_test.txt").ToList();
+            var inputs = File.ReadAllLines(@".\input9.txt").ToList();
 
 
             var total = 0;

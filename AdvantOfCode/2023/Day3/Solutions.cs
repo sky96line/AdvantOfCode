@@ -54,7 +54,7 @@ namespace AdvantOfCode._2023.Day3
 
         public void First()
         {
-            var inputs = File.ReadAllLines(@"C:\Users\skyli\source\repos\AdvantOfCode2023\AdvantOfCode2023\Day3\Input3.txt");
+            var inputs = File.ReadAllLines(@".\Input3.txt");
 
             List<KVP> kvps = new List<KVP>();
 
@@ -162,7 +162,7 @@ namespace AdvantOfCode._2023.Day3
 
         public void Secound()
         {
-            var inputs = File.ReadAllLines(@"C:\Users\skyli\source\repos\AdvantOfCode2023\AdvantOfCode2023\Day3\Input3.txt");
+            var inputs = File.ReadAllLines(@".\Input3.txt");
 
             List<KVP> kvps = new List<KVP>();
 

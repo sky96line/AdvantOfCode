@@ -46,7 +46,7 @@ namespace AdvantOfCode._2023.Day19
 
         public Solutions()
         {
-            var data = File.ReadAllText(@"C:\Users\akash.buch\source\repos\AdvantOfCode2023\AdvantOfCode2023\Day19\input19_test.txt");
+            var data = File.ReadAllText(@".\input19_test.txt");
 
             var workflow = data.Split("\r\n\r\n").First();
             var input_item = data.Split("\r\n\r\n").Last();

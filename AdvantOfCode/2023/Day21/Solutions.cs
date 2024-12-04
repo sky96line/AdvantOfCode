@@ -39,7 +39,7 @@ namespace AdvantOfCode._2023.Day21
 
         public Solutions()
         {
-            var inputs = File.ReadAllLines("C:\\Users\\akash.buch\\source\\repos\\AdvantOfCode2023\\AdvantOfCode2023\\Day21\\input21_test.txt");
+            var inputs = File.ReadAllLines(@".\input21_test.txt");
 
             maps = new char[inputs.Length, inputs[0].Length];
 

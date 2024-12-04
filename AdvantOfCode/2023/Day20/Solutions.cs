@@ -76,7 +76,7 @@ namespace AdvantOfCode._2023.Day20
         List<string> inputs;
         public Solutions()
         {
-            inputs = File.ReadAllLines("C:\\Users\\akash.buch\\source\\repos\\AdvantOfCode2023\\AdvantOfCode2023\\Day20\\input20_test.txt").ToList();
+            inputs = File.ReadAllLines(@".\input20_test.txt").ToList();
         }
 
         int SendPulse(string modual)

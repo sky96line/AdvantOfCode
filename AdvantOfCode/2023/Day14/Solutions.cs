@@ -72,7 +72,7 @@ namespace AdvantOfCode._2023.Day14
 
         public void First()
         {
-            var inputs = File.ReadAllLines(@"C:\Users\akash.buch\source\repos\AdvantOfCode2023\AdvantOfCode2023\Day14\input14.txt").ToList();
+            var inputs = File.ReadAllLines(@".\input14.txt").ToList();
 
             char[,] chars = new char[inputs.Count, inputs[0].Length];
 
@@ -244,7 +244,7 @@ namespace AdvantOfCode._2023.Day14
 
         public void Secound()
         {
-            var inputs = File.ReadAllLines(@"C:\Users\akash.buch\source\repos\AdvantOfCode2023\AdvantOfCode2023\Day14\input14_test.txt").ToList();            
+            var inputs = File.ReadAllLines(@".\input14_test.txt").ToList();            
         }
     }
 

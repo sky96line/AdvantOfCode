@@ -15,7 +15,7 @@ namespace AdvantOfCode._2023.Day2
             var PossibleGreen = 13;
             var PossibleBlue = 14;
 
-            var inputs = File.ReadAllLines(@"C:\Users\skyli\source\repos\AdvantOfCode2023\AdvantOfCode2023\Day2\input2.txt");
+            var inputs = File.ReadAllLines(@".\input2.txt");
 
             var result = 0;
             foreach (var input in inputs)
@@ -62,7 +62,7 @@ namespace AdvantOfCode._2023.Day2
 
         public void Secound()
         {
-            var inputs = File.ReadAllLines(@"C:\Users\skyli\source\repos\AdvantOfCode2023\AdvantOfCode2023\Day2\input2.txt");
+            var inputs = File.ReadAllLines(@".\input2.txt");
 
             var result = 0;
             foreach (var input in inputs)

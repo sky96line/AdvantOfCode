@@ -12,7 +12,7 @@ namespace AdvantOfCode._2024.Day3
     {
         public void First()
         {
-            var input = File.ReadAllText(@"C:\Users\akash.buch\source\repos\AdvantOfCode2023\AdvantOfCode2023\2024\Day3\input.txt");
+            var input = File.ReadAllText(@".\input.txt");
             var output = 0;
 
             var enable = true;
@@ -80,7 +80,7 @@ namespace AdvantOfCode._2024.Day3
 
         public void Secound()
         {
-            var input = File.ReadAllText(@"C:\Users\akash.buch\source\repos\AdvantOfCode2023\AdvantOfCode2023\2024\Day3\input.txt");
+            var input = File.ReadAllText(@".\input.txt");
             var output = 0;
 
             var enable = true;

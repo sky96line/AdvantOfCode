@@ -211,7 +211,7 @@ namespace AdvantOfCode._2023.Day13
 
         public void First()
         {
-            var inputs = File.ReadAllText(@"C:\Users\skyli\source\repos\AdvantOfCode2023\AdvantOfCode2023\Day13\input13.txt");
+            var inputs = File.ReadAllText(@".\input13.txt");
 
             var games = inputs.Split("\r\n\r\n");
 
@@ -234,7 +234,7 @@ namespace AdvantOfCode._2023.Day13
 
         public int First_solution()
         {
-            var inputs = File.ReadAllText(@"C:\Users\skyli\source\repos\AdvantOfCode2023\AdvantOfCode2023\Day13\input13.txt");
+            var inputs = File.ReadAllText(@".\input13.txt");
 
             maps = inputs.Trim().Split("\r\n\r\n");
 
@@ -265,7 +265,7 @@ namespace AdvantOfCode._2023.Day13
 
         public int Secound_solution()
         {
-            var inputs = File.ReadAllText(@"C:\Users\skyli\source\repos\AdvantOfCode2023\AdvantOfCode2023\Day13\input13.txt").Replace("\r\n", "\n");
+            var inputs = File.ReadAllText(@".\input13.txt").Replace("\r\n", "\n");
 
             maps = inputs.Trim().Split("\n\n");
 
@@ -327,7 +327,7 @@ namespace AdvantOfCode._2023.Day13
 
         public void Secound()
         {
-            var inputs = File.ReadAllLines(@"C:\Users\akash.buch\source\repos\AdvantOfCode2023\AdvantOfCode2023\Day10\input10_test.txt").ToList();
+            var inputs = File.ReadAllLines(@".\input10_test.txt").ToList();
         }
     }
 

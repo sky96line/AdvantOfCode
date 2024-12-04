@@ -119,7 +119,7 @@ namespace AdvantOfCode._2023.Day16
         List<string> inputs;
         public Solutions()
         {
-            inputs = File.ReadAllLines(@"C:\Users\skyli\source\repos\AdvantOfCode2023\AdvantOfCode2023\Day16\input16.txt").ToList();
+            inputs = File.ReadAllLines(@".\input16.txt").ToList();
             map = new char[inputs.Count, inputs[0].Length];
         }
         public void First()

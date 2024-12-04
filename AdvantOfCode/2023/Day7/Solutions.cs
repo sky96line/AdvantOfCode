@@ -82,7 +82,7 @@ namespace AdvantOfCode._2023.Day7
         {
             List<char> cards = new() { 'A', 'K', 'Q', 'J', 'T', '9', '8', '7', '6', '5', '4', '3', '2' };
 
-            var inputs = File.ReadAllLines(@"C:\Users\akash.buch\Source\Repos\AdvantOfCode2023\AdvantOfCode2023\Day7\input7.txt");
+            var inputs = File.ReadAllLines(@".\input7.txt");
 
             var hands = inputs.Select(x => x.Split(" ").First()).ToList();
             var bids = inputs.Select(x => int.Parse(x.Split(" ").Last())).ToList();
@@ -220,7 +220,7 @@ namespace AdvantOfCode._2023.Day7
             List<char> cards = new() { 'A', 'K', 'Q', 'T', '9', '8', '7', '6', '5', '4', '3', '2', 'J' };
 
 
-            var inputs = File.ReadAllLines(@"C:\Users\akash.buch\Source\Repos\AdvantOfCode2023\AdvantOfCode2023\Day7\input7.txt");
+            var inputs = File.ReadAllLines(@".\input7.txt");
 
             var hands = inputs.Select(x => x.Split(" ").First()).ToList();
             var bids = inputs.Select(x => int.Parse(x.Split(" ").Last())).ToList();

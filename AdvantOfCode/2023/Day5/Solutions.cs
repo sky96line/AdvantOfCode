@@ -19,7 +19,7 @@ namespace AdvantOfCode._2023.Day5
 
         public void First()
         {
-            var fs = File.ReadAllText(@"C:\Users\akash.buch\Source\Repos\AdvantOfCode2023\AdvantOfCode2023\Day5\input5_test.txt");
+            var fs = File.ReadAllText(@".\input5_test.txt");
             
             var inputs =  fs.Split("\r\n\r\n");
 
@@ -69,7 +69,7 @@ namespace AdvantOfCode._2023.Day5
 
         public void Secound()
         {
-            var fs = File.ReadAllText(@"C:\Users\akash.buch\Source\Repos\AdvantOfCode2023\AdvantOfCode2023\Day5\input5_test.txt");
+            var fs = File.ReadAllText(@".\input5_test.txt");
 
             var inputs = fs.Split("\r\n\r\n");
 

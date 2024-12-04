@@ -68,7 +68,7 @@ namespace AdvantOfCode._2023.Day18
 
         public Solutions()
         {
-            var inputs = File.ReadAllLines(@"C:\Users\akash.buch\source\repos\AdvantOfCode2023\AdvantOfCode2023\Day18\input18_test.txt").ToList();
+            var inputs = File.ReadAllLines(@".\input18_test.txt").ToList();
 
             foreach (var input in inputs)
             {

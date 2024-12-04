@@ -58,7 +58,7 @@ namespace AdvantOfCode._2023.Day15
 
         public void First()
         {
-            var inputs = File.ReadAllText(@"C:\Users\akash.buch\source\repos\AdvantOfCode2023\AdvantOfCode2023\Day15\input15_test.txt");
+            var inputs = File.ReadAllText(@".\input15_test.txt");
 
 
             var vals = inputs.Split(',');
@@ -92,7 +92,7 @@ namespace AdvantOfCode._2023.Day15
 
         public void Secound()
         {
-            var inputs = File.ReadAllText(@"C:\Users\akash.buch\source\repos\AdvantOfCode2023\AdvantOfCode2023\Day15\input15.txt");
+            var inputs = File.ReadAllText(@".\input15.txt");
 
             Dictionary<int, List<Box>> dic = new Dictionary<int, List<Box>>();
 

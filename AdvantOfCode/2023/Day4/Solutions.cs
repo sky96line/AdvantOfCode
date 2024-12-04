@@ -14,7 +14,7 @@ namespace AdvantOfCode._2023.Day4
 
         public void First()
         {
-            var inputs = File.ReadAllLines(@"C:\Users\akash.buch\Source\Repos\AdvantOfCode2023\AdvantOfCode2023\Day4\input4.txt");
+            var inputs = File.ReadAllLines(@".\input4.txt");
             var total = 0;
 
             foreach (var input in inputs)
@@ -52,7 +52,7 @@ namespace AdvantOfCode._2023.Day4
 
         public void Secound()
         {
-            var inputs = File.ReadAllLines(@"C:\Users\akash.buch\Source\Repos\AdvantOfCode2023\AdvantOfCode2023\Day4\input4.txt");
+            var inputs = File.ReadAllLines(@".\input4.txt");
 
             foreach (var input in inputs)
             {

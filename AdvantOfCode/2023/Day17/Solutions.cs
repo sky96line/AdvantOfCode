@@ -228,7 +228,7 @@ namespace AdvantOfCode._2023.Day17
         List<long> inputs;
         public Solutions()
         {
-            inputs = File.ReadAllLines(@"C:\Users\skyli\source\repos\AdvantOfCode2023\AdvantOfCode2023\Day17\input17_test.txt").Select(x=>long.Parse(x)).ToList();
+            inputs = File.ReadAllLines(@".\input17_test.txt").Select(x=>long.Parse(x)).ToList();
             map = new int[inputs.Count, inputs[0].ToString().Length];
         }
         public void First()

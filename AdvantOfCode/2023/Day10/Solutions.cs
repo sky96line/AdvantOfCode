@@ -42,7 +42,7 @@ namespace AdvantOfCode._2023.Day10
 
         public Solutions()
         {
-            inputs = File.ReadAllLines(@"C:\Users\akash.buch\source\repos\AdvantOfCode2023\AdvantOfCode2023\Day10\input10.txt").ToList();
+            inputs = File.ReadAllLines(@".\input10.txt").ToList();
 
             paths = new char[inputs.Count, inputs[0].Length];
             ans = new char[inputs.Count, inputs[0].Length];
@@ -280,7 +280,7 @@ namespace AdvantOfCode._2023.Day10
 
         public void Secound()
         {
-            var inputs = File.ReadAllLines(@"C:\Users\akash.buch\source\repos\AdvantOfCode2023\AdvantOfCode2023\Day10\input10_test.txt").ToList();            
+            var inputs = File.ReadAllLines(@".\input10_test.txt").ToList();            
         }
     }
 

@@ -14,7 +14,7 @@ namespace AdvantOfCode._2023.Day6
     {
         public void First()
         {
-            var inputs = File.ReadAllLines(@"C:\Users\akash.buch\Source\Repos\AdvantOfCode2023\AdvantOfCode2023\Day6\input6.txt");
+            var inputs = File.ReadAllLines(@".\input6.txt");
 
             var times_arr = System.Text.RegularExpressions.Regex.Split(inputs.First().Split(":").Last().Trim(), @"\s+");
             var distance_arr = System.Text.RegularExpressions.Regex.Split(inputs.Last().Split(":").Last().Trim(), @"\s+");
@@ -47,7 +47,7 @@ namespace AdvantOfCode._2023.Day6
 
         public void Secound()
         {
-            var inputs = File.ReadAllLines(@"C:\Users\akash.buch\Source\Repos\AdvantOfCode2023\AdvantOfCode2023\Day6\input6.txt");
+            var inputs = File.ReadAllLines(@".\input6.txt");
 
             var time = long.Parse(inputs.First().Split(":").Last().Trim().Replace(" ", ""));
             var distance = long.Parse(inputs.Last().Split(":").Last().Trim().Replace(" ", ""));

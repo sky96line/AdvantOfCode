@@ -24,7 +24,7 @@ namespace AdvantOfCode._2023.Day8
 
         public Solutions()
         {
-            inputs = File.ReadAllLines(@"C:\Users\akash.buch\source\repos\AdvantOfCode2023\AdvantOfCode2023\Day8\input8.txt").ToList();
+            inputs = File.ReadAllLines(@".\input8.txt").ToList();
 
             direction = inputs.First();
 

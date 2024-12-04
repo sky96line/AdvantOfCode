@@ -12,7 +12,7 @@ namespace AdvantOfCode._2024.Day2
     {
         public void First()
         {
-            var inputs = File.ReadAllLines(@"C:\Users\akash.buch\source\repos\AdvantOfCode2023\AdvantOfCode2023\2024\Day2\input.txt");
+            var inputs = File.ReadAllLines(@".\input.txt");
             var output = 0;
 
             foreach (var input in inputs)
@@ -61,7 +61,7 @@ namespace AdvantOfCode._2024.Day2
 
         public void Secound()
         {
-            var inputs = File.ReadAllLines(@"C:\Users\akash.buch\source\repos\AdvantOfCode2023\AdvantOfCode2023\2024\Day2\input.txt");
+            var inputs = File.ReadAllLines(@".\input.txt");
             var output = 0;
 
             foreach (var input in inputs)
