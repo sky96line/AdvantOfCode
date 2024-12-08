@@ -12,47 +12,80 @@ namespace AdvantOfCode._2024.Day2
     {
         public void First()
         {
-            var inputs = File.ReadAllLines(@".\input.txt");
+            var inputs = File.ReadAllLines(@"C:\Users\akash.buch\source\repos\AdvantOfCode2023\AdvantOfCode\2024\Day2\input.txt");
             var output = 0;
+
 
             foreach (var input in inputs)
             {
                 var reports = input.Split(" ").Select(x => Convert.ToInt32(x)).ToList();
 
-                var problemIndex = -1;
-                for (int i = 1; i < reports.Count - 1; i++)
+                var IsSafe = true;
+                var lastOp = (reports[1] - reports[0]) > 0 ? "+" : "-";
+                
+                for (int i = 0; i < reports.Count - 1; i++)
                 {
-                    if (reports[i - 1] == reports[i])
+                    if (!(Math.Abs(reports[i + 1] - reports[i]) >= 1 && Math.Abs(reports[i + 1] - reports[i]) <= 3))
                     {
-                        problemIndex = i - 1;
+                        reports.RemoveAt(i+1);
+                        IsSafe = false;
                         break;
                     }
-                    else if (reports[i] == reports[i + 1])
+
+                    if (lastOp.Equals("+") && (reports[i + 1] - reports[i]) < 0)
                     {
-                        problemIndex = i;
+                        reports.RemoveAt(i + 1);
+                        IsSafe = false;
                         break;
                     }
-                    else if ((reports[i + 1] - reports[i] > 0 && reports[i] - reports[i - 1] < 0) || (reports[i + 1] - reports[i] < 0 && reports[i] - reports[i - 1] > 0))
+                    if (lastOp.Equals("-") && (reports[i + 1] - reports[i]) > 0)
                     {
-                        problemIndex = i;
-                        break;
-                    }
-                    else if (reports[i + 1] - reports[i] > 3)
-                    {
-                        problemIndex = i;
+                        reports.RemoveAt(i);
+                        IsSafe = false;
                         break;
                     }
                 }
-                
 
-                if (problemIndex == -1)
+
+                if (IsSafe)
                 {
-                    Console.WriteLine("Safe");
+                    Console.WriteLine("Safe " + string.Join(' ', reports));
                     output++;
                 }
                 else
                 {
-                    Console.WriteLine("Unsafe");
+                    IsSafe = true;
+                    lastOp = (reports[1] - reports[0]) > 0 ? "+" : "-";
+                    for (int i = 0; i < reports.Count - 1; i++)
+                    {
+                        if (!(Math.Abs(reports[i + 1] - reports[i]) >= 1 && Math.Abs(reports[i + 1] - reports[i]) <= 3))
+                        {
+
+                            IsSafe = false;
+                            break;
+                        }
+
+                        if (lastOp.Equals("+") && (reports[i + 1] - reports[i]) < 0)
+                        {
+                            IsSafe = false;
+                            break;
+                        }
+                        if (lastOp.Equals("-") && (reports[i + 1] - reports[i]) > 0)
+                        {
+                            IsSafe = false;
+                            break;
+                        }
+                    }
+
+                    if (IsSafe)
+                    {
+                        Console.WriteLine("ReSafe " + string.Join(' ', reports));
+                        output++;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Unsafe " + string.Join(' ', reports));
+                    }
                 }
             }
 
